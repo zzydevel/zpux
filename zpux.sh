@@ -14,10 +14,10 @@ clear
 echo "Checking internet Connection..."
 ping 8.8.8.8 -c 3 > /dev/null 2>&1
 if [[ $? -eq 0 ]]; then
-echo -e $h"[+] Yokatta ! You Are Online !"$n
+echo -e $h"[+] Bacot Wibu !"$n
 sleep 2
 else
-echo -e $m"[-] Gomennasai.. You Are Offline :( OR You internet to slow.."
+echo -e $m"[-] Intinya indihome asu.."
 sleep 3
 s57_main__
 fi
@@ -39,7 +39,7 @@ s57_server_utils__()
 	s57_alert "Creating info.php "
 	echo "<?php" >> /var/www/html/info.php
 	echo "phpinfo();" >> /var/www/html/info.php
-	echo "# by : alinko" >> /var/www/html/info.php
+	echo "# by : alip" >> /var/www/html/info.php
 	echo "?>" >> /var/www/html/info.php
 	xdg-open "http://localhost/info.php" >> /dev/null 2>&1
 	s57_alert "Installing mariadb-server"
@@ -120,6 +120,12 @@ s57_pmod__()
 		s57_alert "Module php-${module} not exists in repository !"
 		exit
 	fi
+}
+s57_pmod__()
+{
+	s57_cekonek
+	echo "hehe"
+	npm install
 }
 s57_banner()
 {
