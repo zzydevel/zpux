@@ -9,7 +9,7 @@ b="\033[1;34m"
 bl="\033[0;34m"
 n="\033[1;0m"
 
-s57_cekonek(){
+s57_cekontolmemek(){
 clear
 echo "Checking internet Connection..."
 ping 8.8.8.8 -c 3 > /dev/null 2>&1
@@ -30,7 +30,7 @@ s57_alert()
 }
 s57_server_utils__()
 {
-	s57_cekonek
+	s57_cekontolmemek
 	s57_alert "Updating system..."
 	apt-get update -y
 	s57_alert "Installing Apache2 & PHP ..."
@@ -39,7 +39,7 @@ s57_server_utils__()
 	s57_alert "Creating info.php "
 	echo "<?php" >> /var/www/html/info.php
 	echo "phpinfo();" >> /var/www/html/info.php
-	echo "# by : alip" >> /var/www/html/info.php
+	echo "# by : polda jatim" >> /var/www/html/info.php
 	echo "?>" >> /var/www/html/info.php
 	xdg-open "http://localhost/info.php" >> /dev/null 2>&1
 	s57_alert "Installing mariadb-server"
@@ -53,12 +53,12 @@ s57_server_utils__()
 	s57_alert "Restarting apache2"
 	/etc/init.d/apache2 restart
 	echo ""
-	echo "~ DONE ~"
+	echo "~ HAPPY MEAL ~"
 	sleep 2
 }
 s57_sublime__()
 {
-	s57_cekonek
+	s57_cekontolmemek
 	s57_alert "Downloading Repository Sublime Text"
 	wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
 	s57_alert "Installing dependencies"
@@ -70,12 +70,12 @@ s57_sublime__()
 	s57_alert "Installing sublime-text"
 	apt-get install sublime-text -y
 	echo ""
-	echo "~ DONE ~"
+	echo "~ HAPPY MEAL ~"
 	sleep 2
 }
 s57_brackets__()
 {
-	s57_cekonek
+	s57_cekontolmemek
 	s57_alert "Adding repository Brackets .."
 	sudo add-apt-repository ppa:webupd8team/brackets
 	s57_alert "Updating system"
@@ -83,31 +83,31 @@ s57_brackets__()
 	s57_alert "Installing Brackets"
 	apt-get install brackets -y
 	echo ""
-	echo "~ DONE ~"
+	echo "~ HAPPY MEAL ~"
 	sleep 2
 }
 s57_mv__()
 {
-	s57_cekonek
+	s57_cekontolmemek
 	s57_alert "Installing mpv from Repository"
 	apt-get install mpv -y
 	s57_alert "Installing moc from Repository"
 	apt-get install moc -y
 	echo ""
-	echo "~ DONE ~"
+	echo "~ HAPPY MEAL ~"
 	echo ""
 	sleep 2
 }
 s57_usu__()
 {
-	s57_cekonek
+	s57_cekontolmemek
 	s57_alert "Installing ubuntu-restricted-extras "
 	read -p "Ini akan memakan waktu yang cukup lama, apa anda ingin melanjutkan? [Y/n]" yn 
 	if [[ $yn == "Y" || $yn == "" || $yn == "y" ]]; then
 		apt-get install ubuntu-restricted-extras -y
 	fi
 	echo ""
-	echo "~ DONE ~"
+	echo "~ HAPPY MEAL ~"
 	sleep 2
 }
 s57_pmod__()
@@ -156,7 +156,7 @@ s57_main__(){
 
 s57_banner
 
-read -p "zzydev >>" aut
+read -p "davdevdavdev >>" aut
 if [[ $aut == 1 ]]; then
 
 	s57_server_utils__
@@ -172,24 +172,24 @@ elif [[ $aut == 3 ]]; then
 	s57_brackets__
 	s57_main__
 
-elif [[ $aut == 4 ]]; then
-
-	s57_mv__
-	s57_main__
-
 elif [[ $aut == 5 ]]; then
 
 	s57_usu__
 	s57_main__
 
-elif [[ $aut == 6 ]]; then
-	
-	s57_pmod__
+elif [[ $aut == 4 ]]; then
+
+	s57_mv__
 	s57_main__
 
 elif [[ $aut == 0 ]]; then
 
 	s57_init__
+	s57_main__
+
+elif [[ $aut == 6 ]]; then
+	
+	s57_pmod__
 	s57_main__
 elif [[ $aut == 7 ]]; then
 	s57_server_utils__
@@ -205,5 +205,5 @@ fi
 if [[ `whoami` == "root" ]]; then
 	s57_main__
 else
-	echo "[JALANKAN SCRIPT INI DENGAN SUPER USER / ROOT ]"
+	echo "[JALANKAN SCRIPT INI DENGAN SUPER PEL ]"
 fi
