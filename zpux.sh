@@ -1,5 +1,5 @@
 #!/bin/bash
-# 
+#
 
 
 m="\033[1;31m"
@@ -35,7 +35,7 @@ s57_server_utils__()
 	apt-get update -y
 	s57_alert "Installing Apache2 & PHP ..."
 	apt-get install apache2 libapache2-mod-php php php-common php-curl php-zip php-mysql php-mbstring -y
-	
+
 	s57_alert "Creating info.php "
 	echo "<?php" >> /var/www/html/info.php
 	echo "phpinfo();" >> /var/www/html/info.php
@@ -98,11 +98,21 @@ s57_mv__()
 	echo ""
 	sleep 2
 }
+s57_nginx__()
+{
+	s57_cekonek
+	s57_alert "Installing nginx from Repository"
+	apt-get install nginx -y
+	echo ""
+	echo "~ DONE ~"
+	echo ""
+	sleep 2
+}
 s57_usu__()
 {
 	s57_cekonek
 	s57_alert "Installing ubuntu-restricted-extras "
-	read -p "Ini akan memakan waktu yang cukup lama, apa anda ingin melanjutkan? [Y/n]" yn 
+	read -p "Ini akan memakan waktu yang cukup lama, apa anda ingin melanjutkan? [Y/n]" yn
 	if [[ $yn == "Y" || $yn == "" || $yn == "y" ]]; then
 		apt-get install ubuntu-restricted-extras -y
 	fi
@@ -134,22 +144,23 @@ s57_banner()
 
  _____           __  __
 |__  /_ __  _   _\ \/ /
-  / /| '_ \| | | |\  / 
- / /_| |_) | |_| |/  \ 
+  / /| '_ \| | | |\  /
+ / /_| |_) | |_| |/  \
 /____| .__/ \__,_/_/\_\\
-     |_|               
+     |_|
 
 ${n}
 
 --------------------------
 
-[1] Lampp 
+[1] Lampp
 [2] Sublime Text
 [3] Brackets
 [4] Music & Video Player (mpv,mocp)
 [5] Ubuntu Software Utils.
 [6] PHP Module
 [7] Programming Package
+[8] Nginx
 "
 }
 s57_main__(){
@@ -183,7 +194,7 @@ elif [[ $aut == 5 ]]; then
 	s57_main__
 
 elif [[ $aut == 6 ]]; then
-	
+
 	s57_pmod__
 	s57_main__
 
@@ -195,6 +206,10 @@ elif [[ $aut == 7 ]]; then
 	s57_server_utils__
 	s57_sublime__
 	s57_brackets__
+	s57_main__
+elif [[ $aut == 8 ]]; then
+
+	s57_nginx__
 	s57_main__
 
 else
